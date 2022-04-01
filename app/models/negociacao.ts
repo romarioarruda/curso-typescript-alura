@@ -13,11 +13,11 @@ export class Negociacao {
         return new Date(this._data.getTime());
     }
 
-    public static criaNegociacao(data: string, quantidade: string, valor: string): Negociacao {
+    public static criaNegociacao(dataString: string, quantidadeString: string, valorString: string): Negociacao {
         const exp = /-/g;
-        const date = new Date(data.replace(exp, ','));
-        const quantidadeInt = parseInt(quantidade);
-        const valorFloat = parseFloat(valor);
-        return new Negociacao(date, quantidadeInt, valorFloat);
+        const date = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
     }
 }

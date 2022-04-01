@@ -5,27 +5,26 @@ export class NegociacoesView extends View<Negociacoes> {
 
     protected template(model: Negociacoes): string {
         return `
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>QUANTIDADE</th>
-                        <th>VALOR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${this.formataLinhas(model)}
-                </tbody>
-            </table>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>DATA</th>
+                    <th>QUANTIDADE</th>
+                    <th>VALOR</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${this.escreveLinhas(model)}
+            </tbody>
+        </table>
         `;
     }
 
-    private formataLinhas(model: Negociacoes) {
+    private escreveLinhas(model: Negociacoes): string {
         return model.lista().map(negociacao => {
             return `
                 <tr>
-                    <td>${new Intl.DateTimeFormat()
-                        .format(negociacao.data)}
+                    <td>${this.formatar(negociacao.data)}
                     </td>
                     <td>
                         ${negociacao.quantidade}
@@ -36,5 +35,10 @@ export class NegociacoesView extends View<Negociacoes> {
                 </tr>
             `;
         }).join('')
+    }
+
+    private formatar(data: Date): string {
+        return new Intl.DateTimeFormat()
+            .format(data);
     }
 }
