@@ -4,10 +4,13 @@ export abstract class View<T> {
     private escapar = false;
 
     constructor(seletor: string, escapar?: boolean) {
-        this.elemento = document.querySelector(seletor) as HTMLElement;
-        if (escapar) {
-            this.escapar = escapar;
-        }
+        const elemento = document.querySelector(seletor);
+        
+        if(!elemento) throw new Error(`O seletor ${seletor} não foi encontrado na DOM.`)
+        
+        this.elemento = elemento as HTMLElement
+        
+        this.escapar = escapar ?? false
     }
 
     public update(model: T): void {
