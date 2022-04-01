@@ -3,8 +3,25 @@ import { View } from './view.js';
 
 export class NegociacoesView extends View<Negociacoes> {
 
-    template(model: Negociacoes): string {
-        const linhas = model.lista().map(negociacao => {
+    protected template(model: Negociacoes): string {
+        return `
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>DATA</th>
+                        <th>QUANTIDADE</th>
+                        <th>VALOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${this.formataLinhas(model)}
+                </tbody>
+            </table>
+        `;
+    }
+
+    private formataLinhas(model: Negociacoes) {
+        return model.lista().map(negociacao => {
             return `
                 <tr>
                     <td>${new Intl.DateTimeFormat()
@@ -19,20 +36,5 @@ export class NegociacoesView extends View<Negociacoes> {
                 </tr>
             `;
         }).join('')
-
-        return `
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>QUANTIDADE</th>
-                        <th>VALOR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${linhas}
-                </tbody>
-            </table>
-        `;
     }
 }
