@@ -67,3 +67,12 @@
 <hr>
 
 ##
+
+**Curso 3**:
+
+* Decorator de método
+
+* Decorator com parâmetro
+
+* Ordem de execução dos decorators
+
