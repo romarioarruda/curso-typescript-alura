@@ -83,3 +83,7 @@
 * O uso de Object.defineProperty
 
 * Cache de Decorators
+
+* Consumindo API externa
+
+* Definindo uma interface para a API
