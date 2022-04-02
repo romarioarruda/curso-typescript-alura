@@ -76,3 +76,10 @@
 
 * Ordem de execução dos decorators
 
+* Decorator de propriedade
+
+* Criação dinâmica de getters com Decorator
+
+* O uso de Object.defineProperty
+
+* Cache de Decorators
