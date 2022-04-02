@@ -8,5 +8,14 @@ if (form) {
         controller.adiciona();
     });
 } else {
-    throw Error('Não foi possível inicializar a aplicação. Verifique se o form existe.');
+    throw Error('Formulário não foi encontrado na DOM.');
+}
+
+const btnImportar = document.querySelector('#btn-importa');
+if (btnImportar) {
+    btnImportar.addEventListener('click', () => {
+        controller.importarDados()
+    });
+} else {
+    throw Error('Botão de importar não encontrado na DOM');
 }
